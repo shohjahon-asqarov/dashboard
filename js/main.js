@@ -1,5 +1,13 @@
-// dom variable
+// DOM Elements
 const tableBody = document.getElementById('crypto-table-body');
+const mobileNavber = document.querySelector('.-translate-x-full');
+const toggleBtn = document.querySelector('#toggle');
+const menuIcon = document.querySelector('.bi-list')
+
+toggleBtn.addEventListener('click', () => {
+    mobileNavber.classList.toggle('-translate-x-full');
+    menuIcon.classList.toggle('bi-x')
+})
 
 
 // Sample data for the cryptocurrency table
@@ -24,100 +32,132 @@ const cryptoData = [
             top10Holders: true
         }
     },
+    {
+        icon: "/images/user.png",
+        name: "$ITRUMP",
+        pair: "SOL",
+        hash: "HasM...JibH",
+        created: "4s",
+        liquidity: "412.22334",
+        liquidityUsd: "$72K",
+        liquidityChange: "+50%",
+        marketCap: "$48.03K",
+        marketCapPerToken: "$0.0448",
+        txns: { buy: 1, sell: 0 },
+        volume: "$12.2K",
+        audit: {
+            mintAuth: true,
+            freezeAuth: true,
+            lpBurned: true,
+            top10Holders: true
+        }
+    },
 ];
 
-// Function to render the table
+
+function createAuditCell(title, subtitle = '') {
+    return `
+        <div class="audit-content">
+            <i class="bi bi-check-circle audit-icon"></i>
+            <div class="audit-text">${title}${subtitle ? `<br>${subtitle}` : ''}</div>
+        </div>
+    `;
+}
+
+/**
+ * Renders the cryptocurrency table with data
+ */
 function renderTable() {
     tableBody.innerHTML = '';
 
     cryptoData.forEach(crypto => {
         const row = document.createElement('tr');
-        row.className = 'border-b border-gray-700 hover:bg-gray-700/30 cursor-pointer';
+        row.className = 'table-row-interactive';
 
-        // Pair Info column
         row.innerHTML = `
-                    <td class="px-4 py-4">
-                        <div class="flex items-center space-x-2">
-                            <img src="${crypto.icon}" alt="${crypto.name}" class="w-8 h-8 rounded-full">
-                            <div>
-                                <div class="font-medium text-white">${crypto.name} <span class="text-header-text">/ ${crypto.pair}</span></div>
-                                <div class="text-xs text-gray-400">${crypto.hash} <i class="bi bi-clipboard ml-1"></i></div>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="px-4 py-4">
-                        <div class="flex items-center">
-                            <i class="bi bi-clock text-gray-400 mr-2"></i>
-                            <span>${crypto.created}</span>
-                        </div>
-                    </td>
-                    <td class="px-4 py-4">
-                        <div class="flex flex-col">
-                        <div class='flex space-x-1'>
-                            <img src='../images/table-logo.svg' />
-                            <div class="font-semibold text-sm">
-                             <span>${crypto.liquidity} </span> /
-                             <span class="text-header-text text-xs">${crypto.liquidityUsd}</span>
-                            </div>
-                        </div>
-                         <div class="text-xs text-success">${crypto.liquidityChange}</div>
-                        </div>
-                    </td>
-                    <td class="px-4 py-4">
-                        <div>
-                            <div class="font-medium">${crypto.marketCap}</div>
-                            <div class="text-xs text-gray-400">${crypto.marketCapPerToken}</div>
-                        </div>
-                    </td>
-                    <td class="px-4 py-4">
-                        <div class="font-semibold">
-                            <div class='text-sm'>${crypto.txns.buy}</div>
-                            <div class="text-xs text-gray-400">
-                             <span class='text-success'>${crypto.txns.buy}</span>
-                             <span>/</span> 
-                             <span class='text-warning'>${crypto.txns.sell}</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="px-4 py-4">
-                        <div class="font-medium text-sm">${crypto.volume}</div>
-                    </td>
+            <!-- Pair Info Column -->
+            <td class="table-cell-base">
+                <div class="pair-info">
+                    <img src="${crypto.icon}" alt="${crypto.name}" class="pair-icon">
+                    <div>
+                        <div class="pair-name">${crypto.name} <span class="text-header-text">/ ${crypto.pair}</span></div>
+                        <div class="pair-hash">${crypto.hash} <i class="bi bi-clipboard ml-1"></i></div>
+                    </div>
+                </div>
+            </td>
 
-                    <td class="px-2 py-4 text-header-text font-medium">
-                        <div class="flex flex-col items-start">
-                            <i class="bi bi-check-circle text-success mb-1"></i>
-                            <div class="text-xs">Mint Auth<br>Disabled</div>
+            <!-- Created Time Column -->
+            <td class="table-cell-base">
+                <div class="timestamp-info">
+                    <i class="bi bi-clock timestamp-icon"></i>
+                    <span>${crypto.created}</span>
+                </div>
+            </td>
+
+            <!-- Liquidity Column -->
+            <td class="table-cell-base">
+                <div class="liquidity-info">
+                    <div class="liquidity-row">
+                        <img src='../images/table-logo.svg' />
+                        <div class="liquidity-amount">
+                            <span>${crypto.liquidity}</span> /
+                            <span class="liquidity-usd">${crypto.liquidityUsd}</span>
                         </div>
-                    </td>
-                    <td class="px-2 py-4 text-header-text font-medium">
-                        <div class="flex flex-col items-start">
-                            <i class="bi bi-check-circle text-success mb-1"></i>
-                            <div class="text-xs">Freeze Auth<br>Disabled</div>
-                        </div>
-                    </td>
-                    <td class="px-2 py-4 text-header-text font-medium">
-                        <div class="flex flex-col items-start">
-                            <i class="bi bi-check-circle text-success mb-1"></i>
-                            <div class="text-xs">LP<br>Burned</div>
-                        </div>
-                    </td>
-                    <td class="px-2 py-4 text-header-text font-medium">
-                        <div class="flex flex-col items-start">
-                            <i class="bi bi-check-circle text-success mb-1"></i>
-                            <div class="text-xs">Top 10<br>Holders</div>
-                        </div>
-                    </td>
-                   
-                    <td class="px-4 py-4">
-                        <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-full flex items-center justify-center">
-                            BUY <i class="bi bi-arrow-right ml-2"></i>
-                        </button>
-                    </td>
-                `;
+                    </div>
+                    <div class="text-xs text-success">${crypto.liquidityChange}</div>
+                </div>
+            </td>
+
+            <!-- Market Cap Column -->
+            <td class="table-cell-base">
+                <div class="market-info">
+                    <div>${crypto.marketCap}</div>
+                    <div class="market-subtext">${crypto.marketCapPerToken}</div>
+                </div>
+            </td>
+
+            <!-- Transactions Column -->
+            <td class="table-cell-base">
+                <div class="txn-info">
+                    <div class="txn-count">${crypto.txns.buy}</div>
+                    <div class="txn-details">
+                        <span class="text-success">${crypto.txns.buy}</span>
+                        <span>/</span> 
+                        <span class="text-warning">${crypto.txns.sell}</span>
+                    </div>
+                </div>
+            </td>
+
+            <!-- Volume Column -->
+            <td class="table-cell-base">
+                <div class="volume-info">${crypto.volume}</div>
+            </td>
+
+            <!-- Audit Columns -->
+            <td class="table-cell-compact audit-cell">
+                ${createAuditCell('Mint Auth', 'Disabled')}
+            </td>
+            <td class="table-cell-compact audit-cell">
+                ${createAuditCell('Freeze Auth', 'Disabled')}
+            </td>
+            <td class="table-cell-compact audit-cell">
+                ${createAuditCell('LP', 'Burned')}
+            </td>
+            <td class="table-cell-compact audit-cell">
+                ${createAuditCell('Top 10', 'Holders')}
+            </td>
+            
+            <!-- Actions Column -->
+            <td class="table-cell-base">
+                <button class="btn-buy">
+                    BUY <i class="bi bi-arrow-right ml-2"></i>
+                </button>
+            </td>
+        `;
 
         tableBody.appendChild(row);
     });
 }
 
-// Render the table when the page loads
+// Initialize table when the page loads
 document.addEventListener('DOMContentLoaded', renderTable);
