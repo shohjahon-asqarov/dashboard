@@ -32,7 +32,7 @@ function renderTable() {
 
     cryptoData.forEach(crypto => {
         const row = document.createElement('tr');
-        row.className = 'border-b border-gray-700 hover:bg-gray-700/30';
+        row.className = 'border-b border-gray-700 hover:bg-gray-700/30 cursor-pointer';
 
         // Pair Info column
         row.innerHTML = `

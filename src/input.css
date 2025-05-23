@@ -6,6 +6,23 @@
   .container {
     @apply max-w-1440 px-5 mx-auto;
   }
+
+  /* present btn-group */
+  .preset-container {
+    @apply flex items-center gap-4 p-4 text-white text-sm font-semibold;
+  }
+
+  .preset-group {
+    @apply flex bg-[#1F1F27] rounded-xl p-1;
+  }
+
+  .preset-btn {
+    @apply px-3 py-1.5 rounded-lg text-gray-400 hover:bg-[#2D2D38] hover:text-white transition;
+  }
+
+  .preset-btn-active {
+    @apply px-3 py-1.5 rounded-lg bg-[#2D2D38] text-white font-semibold;
+  }
 }
 
 html {
@@ -34,7 +51,7 @@ header .tabs-list button.active {
 .nice-select {
   background-color: transparent !important;
   border-radius: 8px !important;
-  border: 2px solid #494e5b80;
+  border: 2px solid #494e5b80 !important;
   min-width: 120px;
 }
 
@@ -83,4 +100,12 @@ tr {
 }
 thead tr {
   border-bottom: 2px solid #374151;
+}
+
+
+.btn-outlined {
+  border: 2px solid #494e5b80;
+  min-width: 140px;
+  padding: 10px;
+  border-radius: 8px;
 }
