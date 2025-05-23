@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container {
+    @apply max-w-1440 px-5 mx-auto;
+  }
+}
+
+html {
+  font-family: "Inter", sans-serif;
+  @apply text-white;
+}
+
+input {
+  @apply bg-transparent outline-none;
+}
+
+span {
+  @apply inline-block;
+}
+
+/* header */
+
+header .tabs-list button {
+  @apply bg-transparent rounded-lg py-1 px-2 text-header-text;
+}
+header .tabs-list button.active {
+  @apply bg-primary text-[#fcfcf9] rounded-lg py-1 px-2;
+}
+
+/* nice select */
+.nice-select {
+  background-color: transparent !important;
+  border-radius: 8px !important;
+  border: 2px solid #494e5b80;
+  min-width: 120px;
+}
+
+.nice-select .option {
+  background-color: #161327;
+  color: white;
+}
+
+.nice-select .option:hover,
+.nice-select .option.focus,
+.nice-select .option.selected {
+  background-color: #2e2b3f !important;
+}
+
+/* table */
+.table-container {
+  overflow-x: auto;
+}
+.status-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.status-green {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+.status-orange {
+  background-color: rgba(249, 115, 22, 0.1);
+  color: #f97316;
+}
+/* Add border styles */
+th,
+td {
+  border-right: 1px solid #374151;
+}
+th:last-child,
+td:last-child {
+  border-right: none;
+}
+tr {
+  border-bottom: 1px solid #374151;
+}
+thead tr {
+  border-bottom: 2px solid #374151;
+}
