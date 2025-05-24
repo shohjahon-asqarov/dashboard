@@ -59,7 +59,7 @@ function createAuditCell(title, subtitle = '') {
     return `
         <div class="audit-content">
             <i class="bi bi-check-circle audit-icon"></i>
-            <div class="audit-text">${title}${subtitle ? `<br>${subtitle}` : ''}</div>
+            <div class="audit-text hidden md:block">${title}${subtitle ? `<br>${subtitle}` : ''}</div>
         </div>
     `;
 }
@@ -134,13 +134,13 @@ function renderTable() {
             </td>
 
             <!-- Audit Columns -->
-            <td class="table-cell-compact audit-cell">
+            <td class="table-cell-compact audit-cell !border-none">
                 ${createAuditCell('Mint Auth', 'Disabled')}
             </td>
-            <td class="table-cell-compact audit-cell">
+            <td class="table-cell-compact audit-cell !border-none">
                 ${createAuditCell('Freeze Auth', 'Disabled')}
             </td>
-            <td class="table-cell-compact audit-cell">
+            <td class="table-cell-compact audit-cell !border-none">
                 ${createAuditCell('LP', 'Burned')}
             </td>
             <td class="table-cell-compact audit-cell">
@@ -150,7 +150,8 @@ function renderTable() {
             <!-- Actions Column -->
             <td class="table-cell-base">
                 <button class="btn-buy">
-                    BUY <i class="bi bi-arrow-right ml-2"></i>
+                    <span class="hidden md:inline-block">BUY <i class="bi bi-arrow-right ml-2"></i></span>
+                    <i class="bi bi-lightning-charge-fill inline-block md:hidden"></i>
                 </button>
             </td>
         `;

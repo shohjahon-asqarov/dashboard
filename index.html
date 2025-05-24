@@ -58,12 +58,12 @@
 
         <!-- Main Navigation -->
         <nav class="flex items-start gap-3 tabs-list">
-          <button class="active">New Pairs</button>
-          <button>Trending</button>
-          <button>Memescope</button>
-          <button>Tracker</button>
-          <button>Orders</button>
-          <button>Holdings</button>
+          <a href="#" class="active">New Pairs</a>
+          <a href="#">Trending</a>
+          <a href="#">Memescope</a>
+          <a href="#">Tracker</a>
+          <a href="#">Orders</a>
+          <a href="#">Holdings</a>
         </nav>
 
         <!-- Search Component -->
@@ -79,13 +79,16 @@
       <div class="flex items-center space-x-8 text-white">
         <!-- Wallet Balance -->
         <div class="flex items-center gap-2">
-          <img class="h-6" alt="Solana logo" src="./images/solana.svg" />
-          <div class="flex flex-col justify-center -space-y-1.5">
+          <img class="h-8 -translate-y-0.5" alt="Solana logo" src="./images/solana.svg" />
+          <div class="flex flex-col justify-center -space-y-2.5">
             <span class="font-semibold text-base">0.0009</span>
-            <div class="flex items-center space-x-0.5">
-              <span class="text-xs font-semibold text-header-text">SOL</span>
-              <i class="bi bi-caret-down"></i>
-            </div>
+            <select id="tokenSelectHeader" class="!border-none !p-0 min-w-16 !text-header-text !font-semibold"
+              aria-label="Select Token">
+              <option selected data-icon="bi-funnel">SOL</option>
+              <option>ETH</option>
+              <option>BNB</option>
+              <option>USDT</option>
+            </select>
           </div>
         </div>
 
@@ -166,7 +169,7 @@
         </div>
 
         <!-- Filter Controls -->
-        <div class="flex items-center gap-4 pb-6 flex-wrap justify-between 1000:justify-start w-full filter-controls">
+        <div class="flex items-center gap-x-4 pb-6 flex-wrap justify-between 1000:justify-start w-full filter-controls">
           <!-- Filter Dropdowns -->
           <select id="filterSelect" class="w-auto" aria-label="Filter Options">
             <option selected data-icon="bi-funnel">Filter</option>
@@ -260,6 +263,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       // Apply nice-select2 to all dropdown elements
       const dropdowns = [
+        "tokenSelectHeader",
         "tokenSelect",
         "filterSelect",
         "dexesSelect",
