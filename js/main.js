@@ -76,7 +76,7 @@ function renderTable() {
 
         row.innerHTML = `
             <!-- Pair Info Column -->
-            <td class="table-cell-base sticky left-0 z-10 bg-background ">
+            <td class="table-cell-base sticky left-0 bg-background ">
                 <div class="pair-info">
                     <img src="${crypto.icon}" alt="${crypto.name}" class="pair-icon">
                     <div>

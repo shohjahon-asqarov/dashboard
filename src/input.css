@@ -242,7 +242,7 @@ header .tabs-list a {
 /* Nice Select Customization */
 .nice-select {
   /* min-width: 120px; */
-  @apply !rounded-full 1000:!rounded-lg border 1000:border-2 !border-input-border !bg-transparent w-full z-20;
+  @apply !rounded-full 1000:!rounded-lg border 1000:border-2 !border-input-border !bg-transparent w-full;
 }
 
 .nice-select .option,

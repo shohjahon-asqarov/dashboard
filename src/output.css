@@ -1017,6 +1017,18 @@ video {
   z-index: 40;
 }
 
+.z-\[2\] {
+  z-index: 2;
+}
+
+.z-20 {
+  z-index: 20;
+}
+
+.\!z-20 {
+  z-index: 20 !important;
+}
+
 .ml-1 {
   margin-left: 0.25rem;
 }
@@ -1201,10 +1213,6 @@ video {
   border-width: 2px;
 }
 
-.border-r {
-  border-right-width: 1px;
-}
-
 .border-solid {
   border-style: solid;
 }
@@ -1216,11 +1224,6 @@ video {
 .border-gray-700 {
   --tw-border-opacity: 1;
   border-color: rgb(55 65 81 / var(--tw-border-opacity, 1));
-}
-
-.border-header-text {
-  --tw-border-opacity: 1;
-  border-color: rgb(127 133 150 / var(--tw-border-opacity, 1));
 }
 
 .border-input-border {
@@ -1472,7 +1475,6 @@ header .tabs-list a {
 
 .nice-select {
   /* min-width: 120px; */
-  z-index: 20;
   width: 100%;
   border-radius: 9999px !important;
   border-width: 1px;
