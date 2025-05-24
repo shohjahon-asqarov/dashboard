@@ -1472,7 +1472,7 @@ header .tabs-list a {
 
 .nice-select {
   /* min-width: 120px; */
-  z-index: 50;
+  z-index: 20;
   width: 100%;
   border-radius: 9999px !important;
   border-width: 1px;
